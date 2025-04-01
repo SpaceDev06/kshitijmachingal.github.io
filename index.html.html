@@ -1,0 +1,1635 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kshitij Machingal's Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none; /* Hide default cursor */
+        }
+        
+        /* Custom Cursor Styles */
+        .cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.5);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.5);
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.3);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        body:hover .cursor {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(255, 215, 0, 0.8);
+        }
+        
+        .cursor-follower.active {
+            transform: translate(-50%, -50%) scale(3);
+        }
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?city,night') no-repeat center center/cover;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(17,17,17,0.6) 100%);
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 15px #FFD700;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        /* Shape Styles */
+        .abstract-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #FFD700, #FF4500);
+            top: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #B8860B, #8B0000);
+            bottom: -50px;
+            right: -50px;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(225deg, #FF8C00, #FFD700);
+            top: 40%;
+            right: 20%;
+            animation: float 12s ease-in-out infinite 1s;
+        }
+        
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(315deg, #FF4500, #B8860B);
+            bottom: 20%;
+            left: 15%;
+            animation: float 9s ease-in-out infinite 0.5s;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        .shape-5 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(180deg, #FFD700, #8B0000);
+            top: 20%;
+            right: 30%;
+            animation: float 7s ease-in-out infinite 1.5s;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        
+        /* Grid pattern overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        .hero-title {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(to right, #FFD700, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            background: linear-gradient(to right, #00BFFF, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .hero-title::after, .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #FFD700, #FF4500);
+            border-radius: 3px;
+        }
+        
+        .hero-subtitle::after {
+            background: linear-gradient(to right, #00BFFF, #00FFFF);
+        }
+        
+        .hero-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Gallery image hover effect */
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+        
+        /* About Me boxes */
+        .about-box {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            height: 100%;
+        }
+        
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .about-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-content {
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #FFD700;
+        }
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-icon {
+            font-size: 4rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            animation: bounce 0.5s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        /* Form enhancements */
+        .form-input {
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+        }
+        
+        .form-input:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Social Icons */
+        .social-icon {
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .footer-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-icon {
+            color: #FFD700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: white;
+        }
+        
+        .copyright {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .rights {
+            color: #FFD700;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Profile Image Styles - Added from the circular image code */
+        .profile-section {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            display: inline-block;
+            padding: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientBG 8s ease infinite;
+            background-size: 200% 200%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .profile-image-wrapper {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ffffff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+            transform: scale(1);
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(10%);
+        }
+
+        /* Hover Effects */
+        .profile-image-container:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile-image-container:hover .profile-image-wrapper {
+            transform: scale(1.1);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image-container:hover .profile-image {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        /* Animation for gradient background */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow effect on hover */
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .profile-image-container:hover::after {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1.05); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Navigation Bar -->
+    <nav class="bg-black text-white p-4 fixed w-full top-0 shadow-lg z-50 flex justify-between items-center">
+        <div class="text-xl font-bold">KM.</div>
+        
+        <!-- Centered Navigation Links -->
+        <div class="absolute left-1/2 transform -translate-x-1/2">
+            <div class="flex space-x-6">
+                <a href="#home" class="hover:text-yellow-500 transition-colors">Home</a>
+                <a href="#about" class="hover:text-yellow-500 transition-colors">About</a>
+                <a href="#gallery" class="hover:text-yellow-500 transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-yellow-500 transition-colors">Contact</a>
+            </div>
+        </div>
+        
+        <!-- Social Media Icons with your links -->
+        <div class="flex space-x-4">
+            <a href="https://in.linkedin.com/" class="social-icon" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/" class="social-icon" title="GitHub" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/kshitijs_76/" class="social-icon" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="grid-overlay"></div>
+        <div class="abstract-shape shape-1"></div>
+        <div class="abstract-shape shape-2"></div>
+        <div class="abstract-shape shape-3"></div>
+        <div class="abstract-shape shape-4"></div>
+        <div class="abstract-shape shape-5"></div>
+        
+        <div class="hero-content px-4 max-w-6xl mx-auto">
+            <h1 class="hero-title text-4xl md:text-6xl font-bold mb-2">Welcome to Kshitij Machingal's World</h1>
+            <h2 class="hero-subtitle text-3xl md:text-5xl font-bold mb-6">Computer Engineer at Fr.CRCE</h2>
+            <p class="text-lg md:text-xl mt-4 mx-auto relative max-w-2xl">
+                <span class="relative z-10 bg-black bg-opacity-70 px-4 py-2 rounded-lg inline-block">
+                    I am passionate about <span id="typing" class="text-yellow-500 font-medium"></span>
+                </span>
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#about" class="hero-btn bg-yellow-500 text-black px-6 py-3 rounded-lg font-medium glow hover:bg-yellow-600 hover:transform hover:scale-105 mx-auto sm:mx-0">
+                    Explore My Work
+                </a>
+                <a href="#contact" class="hero-btn bg-transparent border-2 border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg font-medium glow hover:bg-yellow-500 hover:text-black hover:transform hover:scale-105 mx-auto sm:mx-0">
+                    Let's Connect
+                </a>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-gray-900 text-center parallax" style="background-image: url('https://source.unsplash.com/1600x900/?coding');">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">About Me</h2>
+            
+            <!-- Profile Image Section - Added from circular image code -->
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <div class="profile-image-wrapper">
+                        <img src="your-image.jpg" alt="Kshitij Machingal" class="profile-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-12">
+                <!-- Web Development Box -->
+                <div class="about-box">
+                    <div class="about-icon">🚀</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Web Development</h3>
+                    <p class="text-gray-300">
+                        I enjoy building visually stunning and highly functional websites. Whether it's designing sleek UI/UX or optimizing performance, I love the challenge of bringing ideas to life through HTML, CSS, JavaScript, and frameworks like Tailwind CSS.
+                    </p>
+                </div>
+                
+                <!-- Personal Finance Box -->
+                <div class="about-box">
+                    <div class="about-icon">💰</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Personal Finance</h3>
+                    <p class="text-gray-300">
+                        Beyond coding, I have a deep interest in financial literacy. From budgeting to investing, I'm always learning how to make smart financial decisions. I believe in financial independence and love discussing ways to build wealth and manage money wisely.
+                    </p>
+                </div>
+                
+                <!-- Gearhead Box -->
+                <div class="about-box">
+                    <div class="about-icon">🏎</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Gearhead & Motorcycles</h3>
+                    <p class="text-gray-300">
+                        There's nothing quite like the thrill of machines! I'm fascinated by automobiles and motorcycles, constantly exploring new technologies, modifications, and the sheer power of engines. Whether it's tuning performance or understanding mechanics, I'm all in!
+                    </p>
+                </div>
+                
+                <!-- Sports Box -->
+                <div class="about-box">
+                    <div class="about-icon">⚽</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Playing Sports</h3>
+                    <p class="text-gray-300">
+                        I believe in staying active and competitive. Playing sports keeps me energized and helps me develop discipline, teamwork, and a never-give-up attitude. Whether it's football, basketball, or a casual game with friends, I'm always ready for some action!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-black bg-opacity-70 inline-block px-6 py-4 rounded-lg border border-yellow-500">
+                <p class="text-lg">
+                    🔗 Want to connect? Check out my portfolio and let's create something amazing together!
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">Gallery</h2>
+            <p class="text-lg text-center mb-12">A collection of my work, hobbies, and memorable moments.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Motorcycle Image -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="https://source.unsplash.com/800x600/?motorcycle,sportbike" 
+                         alt="Motorcycle Enthusiast"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Gearhead Passion</h3>
+                    </div>
+                </div>
+                
+                <!-- Coding Image -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="https://source.unsplash.com/800x600/?coding,programmer" 
+                         alt="Coding and Development"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Web Development</h3>
+                    </div>
+                </div>
+                
+                <!-- Cricket Image - Using local file -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kshitij Machingal's Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none; /* Hide default cursor */
+        }
+        
+        /* Custom Cursor Styles */
+        .cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.5);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.5);
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.3);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        body:hover .cursor {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background-color: rgba(255, 215, 0, 0.8);
+        }
+        
+        .cursor-follower.active {
+            transform: translate(-50%, -50%) scale(3);
+        }
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?city,night') no-repeat center center/cover;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(17,17,17,0.6) 100%);
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 15px #FFD700;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        /* Shape Styles */
+        .abstract-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #FFD700, #FF4500);
+            top: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #B8860B, #8B0000);
+            bottom: -50px;
+            right: -50px;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+        
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(225deg, #FF8C00, #FFD700);
+            top: 40%;
+            right: 20%;
+            animation: float 12s ease-in-out infinite 1s;
+        }
+        
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(315deg, #FF4500, #B8860B);
+            bottom: 20%;
+            left: 15%;
+            animation: float 9s ease-in-out infinite 0.5s;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        
+        .shape-5 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(180deg, #FFD700, #8B0000);
+            top: 20%;
+            right: 30%;
+            animation: float 7s ease-in-out infinite 1.5s;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        
+        /* Grid pattern overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        .hero-title {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(to right, #FFD700, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            background: linear-gradient(to right, #00BFFF, #00FFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .hero-title::after, .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #FFD700, #FF4500);
+            border-radius: 3px;
+        }
+        
+        .hero-subtitle::after {
+            background: linear-gradient(to right, #00BFFF, #00FFFF);
+        }
+        
+        .hero-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Gallery image hover effect */
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+        
+        /* About Me boxes */
+        .about-box {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            height: 100%;
+        }
+        
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        
+        .about-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-content {
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #FFD700;
+        }
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+        
+        .popup-icon {
+            font-size: 4rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            animation: bounce 0.5s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        /* Form enhancements */
+        .form-input {
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+        }
+        
+        .form-input:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+        
+        /* Social Icons */
+        .social-icon {
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .footer-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-icon {
+            color: #FFD700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: white;
+        }
+        
+        .copyright {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .rights {
+            color: #FFD700;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Profile Image Styles - Added from the circular image code */
+        .profile-section {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            display: inline-block;
+            padding: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientBG 8s ease infinite;
+            background-size: 200% 200%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .profile-image-wrapper {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ffffff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+            transform: scale(1);
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(10%);
+        }
+
+        /* Hover Effects */
+        .profile-image-container:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile-image-container:hover .profile-image-wrapper {
+            transform: scale(1.1);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image-container:hover .profile-image {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        /* Animation for gradient background */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow effect on hover */
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .profile-image-container:hover::after {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            70% { transform: scale(1.05); opacity: 0.3; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor Elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Navigation Bar -->
+    <nav class="bg-black text-white p-4 fixed w-full top-0 shadow-lg z-50 flex justify-between items-center">
+        <div class="text-xl font-bold">KM.</div>
+        
+        <!-- Centered Navigation Links -->
+        <div class="absolute left-1/2 transform -translate-x-1/2">
+            <div class="flex space-x-6">
+                <a href="#home" class="hover:text-yellow-500 transition-colors">Home</a>
+                <a href="#about" class="hover:text-yellow-500 transition-colors">About</a>
+                <a href="#gallery" class="hover:text-yellow-500 transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-yellow-500 transition-colors">Contact</a>
+            </div>
+        </div>
+        
+        <!-- Social Media Icons with your links -->
+        <div class="flex space-x-4">
+            <a href="https://in.linkedin.com/" class="social-icon" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/" class="social-icon" title="GitHub" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/kshitijs_76/" class="social-icon" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="grid-overlay"></div>
+        <div class="abstract-shape shape-1"></div>
+        <div class="abstract-shape shape-2"></div>
+        <div class="abstract-shape shape-3"></div>
+        <div class="abstract-shape shape-4"></div>
+        <div class="abstract-shape shape-5"></div>
+        
+        <div class="hero-content px-4 max-w-6xl mx-auto">
+            <h1 class="hero-title text-4xl md:text-6xl font-bold mb-2">Welcome to Kshitij Machingal's World</h1>
+            <h2 class="hero-subtitle text-3xl md:text-5xl font-bold mb-6">Computer Engineer at Fr.CRCE</h2>
+            <p class="text-lg md:text-xl mt-4 mx-auto relative max-w-2xl">
+                <span class="relative z-10 bg-black bg-opacity-70 px-4 py-2 rounded-lg inline-block">
+                    I am passionate about <span id="typing" class="text-yellow-500 font-medium"></span>
+                </span>
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#about" class="hero-btn bg-yellow-500 text-black px-6 py-3 rounded-lg font-medium glow hover:bg-yellow-600 hover:transform hover:scale-105 mx-auto sm:mx-0">
+                    Explore My Work
+                </a>
+                <a href="#contact" class="hero-btn bg-transparent border-2 border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg font-medium glow hover:bg-yellow-500 hover:text-black hover:transform hover:scale-105 mx-auto sm:mx-0">
+                    Let's Connect
+                </a>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-gray-900 text-center parallax" style="background-image: url('https://source.unsplash.com/1600x900/?coding');">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">About Me</h2>
+            
+            <!-- Profile Image Section - Added from circular image code -->
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <div class="profile-image-wrapper">
+                        <img src="<a href="https://ibb.co/Vch4KQM8"><img src="https://i.ibb.co/5gzH7nsV/images.jpg" alt="images" border="0"></a>" class="profile-image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-12">
+                <!-- Web Development Box -->
+                <div class="about-box">
+                    <div class="about-icon">🚀</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Web Development</h3>
+                    <p class="text-gray-300">
+                        I enjoy building visually stunning and highly functional websites. Whether it's designing sleek UI/UX or optimizing performance, I love the challenge of bringing ideas to life through HTML, CSS, JavaScript, and frameworks like Tailwind CSS.
+                    </p>
+                </div>
+                
+                <!-- Personal Finance Box -->
+                <div class="about-box">
+                    <div class="about-icon">💰</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Personal Finance</h3>
+                    <p class="text-gray-300">
+                        Beyond coding, I have a deep interest in financial literacy. From budgeting to investing, I'm always learning how to make smart financial decisions. I believe in financial independence and love discussing ways to build wealth and manage money wisely.
+                    </p>
+                </div>
+                
+                <!-- Gearhead Box -->
+                <div class="about-box">
+                    <div class="about-icon">🏎</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Gearhead & Motorcycles</h3>
+                    <p class="text-gray-300">
+                        There's nothing quite like the thrill of machines! I'm fascinated by automobiles and motorcycles, constantly exploring new technologies, modifications, and the sheer power of engines. Whether it's tuning performance or understanding mechanics, I'm all in!
+                    </p>
+                </div>
+                
+                <!-- Sports Box -->
+                <div class="about-box">
+                    <div class="about-icon">⚽</div>
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-3">Playing Sports</h3>
+                    <p class="text-gray-300">
+                        I believe in staying active and competitive. Playing sports keeps me energized and helps me develop discipline, teamwork, and a never-give-up attitude. Whether it's football, basketball, or a casual game with friends, I'm always ready for some action!
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-black bg-opacity-70 inline-block px-6 py-4 rounded-lg border border-yellow-500">
+                <p class="text-lg">
+                    🔗 Want to connect? Check out my portfolio and let's create something amazing together!
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">Gallery</h2>
+            <p class="text-lg text-center mb-12">A collection of my work, hobbies, and memorable moments.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Motorcycle Image -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="https://source.unsplash.com/800x600/?motorcycle,sportbike" 
+                         alt="Motorcycle Enthusiast"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Gearhead Passion</h3>
+                    </div>
+                </div>
+                
+                <!-- Coding Image -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="https://source.unsplash.com/800x600/?coding,programmer" 
+                         alt="Coding and Development"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Web Development</h3>
+                    </div>
+                </div>
+                
+                <!-- Cricket Image - Using local file -->
+                <div class="gallery-item relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co/P7PQgy0/cricket.jpg" alt="cricket" border="0"></a>" 
+                         alt="Playing Cricket"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Cricket Enthusiast</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Me Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">Contact Me</h2>
+            <p class="text-lg text-center mb-12">Feel free to reach out!</p>
+            
+            <form id="contactForm" class="space-y-4">
+                <input type="text" placeholder="Your Name" 
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required>
+                <input type="email" placeholder="Your Email" 
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required>
+                <textarea placeholder="Your Message" rows="5"
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required></textarea>
+                <button type="submit" 
+                        class="w-full bg-yellow-500 text-black px-6 py-3 rounded-lg font-medium hover:bg-yellow-600 transition-colors glow">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content max-w-6xl mx-auto px-4">
+            <div class="footer-icons">
+                <a href="https://in.linkedin.com/" class="footer-icon" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/" class="footer-icon" title="GitHub" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/kshitijs_76/" class="footer-icon" title="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="rights">All Rights Reserved to Kshitij Machingal (KM)</p>
+            <p class="copyright">Copyright © 2025</p>
+        </div>
+    </footer>
+    
+    <!-- Popup Success Message -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-content">
+            <div class="popup-icon">✓</div>
+            <h3 class="text-2xl font-bold text-yellow-500 mb-2">Success!</h3>
+            <p class="mb-4">Your message has been sent successfully.</p>
+            <button onclick="closePopup()" 
+                    class="bg-yellow-500 text-black px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Custom Cursor Logic
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Add slight delay to follower for smooth trailing effect
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+            
+            // Add active state when clicking
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('active');
+                cursorFollower.classList.add('active');
+            });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('active');
+                cursorFollower.classList.remove('active');
+            });
+            
+            // Add hover effects for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .gallery-item, .about-box');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.backgroundColor = 'rgba(255, 215, 0, 0.8)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.backgroundColor = 'rgba(255, 215, 0, 0.5)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+            
+            // Typing Effect
+            new Typed("#typing", {
+                strings: ["Web Development", "Personal Finance", "Playing Sports", "Being a Gearhead"],
+                typeSpeed: 100,
+                backSpeed: 50,
+                loop: true,
+                smartBackspace: true
+            });
+            
+            // Contact Form Submission with Popup
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                // Show the popup
+                document.getElementById("successPopup").classList.add("active");
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Initialize ScrollReveal
+            ScrollReveal().reveal('.hero-content > *', { 
+                delay: 300,
+                distance: '50px',
+                origin: 'bottom',
+                interval: 200,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)'
+            });
+            
+            ScrollReveal().reveal('#about, #gallery, #contact', {
+                delay: 200,
+                distance: '40px',
+                origin: 'bottom',
+                interval: 100,
+                easing: 'ease-out'
+            });
+            
+            // Animate about boxes and form elements
+            ScrollReveal().reveal('.about-box, #contactForm input, #contactForm textarea, #contactForm button', {
+                delay: 200,
+                distance: '20px',
+                origin: 'bottom',
+                interval: 100,
+                easing: 'ease-out'
+            });
+
+            // Profile Image Proximity Effect - Added from circular image code
+            const profileContainer = document.querySelector('.profile-image-container');
+            const profileWrapper = document.querySelector('.profile-image-wrapper');
+            const profileSection = document.querySelector('.profile-section');
+            const profileImage = document.querySelector('.profile-image');
+
+            profileSection.addEventListener('mousemove', (e) => {
+                const rect = profileSection.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                const distance = Math.sqrt(x * x + y * y);
+                const maxDistance = 200;
+                
+                if (distance < maxDistance) {
+                    // Calculate scale based on distance
+                    const scale = 1 + (0.15 * (1 - distance/maxDistance));
+                    
+                    // Calculate tilt based on cursor position
+                    const tiltX = (y / maxDistance) * 10;
+                    const tiltY = -(x / maxDistance) * 10;
+                    
+                    // Apply transformations
+                    profileWrapper.style.transform = `scale(${scale}) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                    
+                    // Adjust image properties
+                    const grayscale = Math.min(10, distance/10);
+                    profileImage.style.filter = `grayscale(${grayscale}%)`;
+                    
+                    // Adjust glow intensity
+                    const glowOpacity = 0.4 * (1 - distance/maxDistance);
+                    profileContainer.style.boxShadow = `0 ${8 + (distance/10)}px ${25 + (distance/5)}px rgba(102, 126, 234, ${0.2 + glowOpacity})`;
+                }
+            });
+
+            // Reset on mouse leave
+            profileSection.addEventListener('mouseleave', () => {
+                profileWrapper.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
+                profileImage.style.filter = 'grayscale(10%)';
+                profileContainer.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
+            });
+        });
+        
+        function closePopup() {
+            document.getElementById("successPopup").classList.remove("active");
+        }
+    </script>
+</body>
+</html>" 
+                         alt="Playing Cricket"
+                         class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
+                        <h3 class="text-yellow-500 text-xl font-bold">Cricket Enthusiast</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Me Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">Contact Me</h2>
+            <p class="text-lg text-center mb-12">Feel free to reach out!</p>
+            
+            <form id="contactForm" class="space-y-4">
+                <input type="text" placeholder="Your Name" 
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required>
+                <input type="email" placeholder="Your Email" 
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required>
+                <textarea placeholder="Your Message" rows="5"
+                       class="form-input w-full p-3 bg-gray-800 rounded-lg focus:outline-none" required></textarea>
+                <button type="submit" 
+                        class="w-full bg-yellow-500 text-black px-6 py-3 rounded-lg font-medium hover:bg-yellow-600 transition-colors glow">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content max-w-6xl mx-auto px-4">
+            <div class="footer-icons">
+                <a href="https://in.linkedin.com/" class="footer-icon" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/" class="footer-icon" title="GitHub" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/kshitijs_76/" class="footer-icon" title="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="rights">All Rights Reserved to Kshitij Machingal (KM)</p>
+            <p class="copyright">Copyright © 2025</p>
+        </div>
+    </footer>
+    
+    <!-- Popup Success Message -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-content">
+            <div class="popup-icon">✓</div>
+            <h3 class="text-2xl font-bold text-yellow-500 mb-2">Success!</h3>
+            <p class="mb-4">Your message has been sent successfully.</p>
+            <button onclick="closePopup()" 
+                    class="bg-yellow-500 text-black px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Custom Cursor Logic
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Add slight delay to follower for smooth trailing effect
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+            
+            // Add active state when clicking
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('active');
+                cursorFollower.classList.add('active');
+            });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('active');
+                cursorFollower.classList.remove('active');
+            });
+            
+            // Add hover effects for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .gallery-item, .about-box');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.backgroundColor = 'rgba(255, 215, 0, 0.8)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.backgroundColor = 'rgba(255, 215, 0, 0.5)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+            
+            // Typing Effect
+            new Typed("#typing", {
+                strings: ["Web Development", "Personal Finance", "Playing Sports", "Being a Gearhead"],
+                typeSpeed: 100,
+                backSpeed: 50,
+                loop: true,
+                smartBackspace: true
+            });
+            
+            // Contact Form Submission with Popup
+            document.getElementById("contactForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                // Show the popup
+                document.getElementById("successPopup").classList.add("active");
+                
+                // Reset form
+                this.reset();
+            });
+            
+            // Initialize ScrollReveal
+            ScrollReveal().reveal('.hero-content > *', { 
+                delay: 300,
+                distance: '50px',
+                origin: 'bottom',
+                interval: 200,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)'
+            });
+            
+            ScrollReveal().reveal('#about, #gallery, #contact', {
+                delay: 200,
+                distance: '40px',
+                origin: 'bottom',
+                interval: 100,
+                easing: 'ease-out'
+            });
+            
+            // Animate about boxes and form elements
+            ScrollReveal().reveal('.about-box, #contactForm input, #contactForm textarea, #contactForm button', {
+                delay: 200,
+                distance: '20px',
+                origin: 'bottom',
+                interval: 100,
+                easing: 'ease-out'
+            });
+
+            // Profile Image Proximity Effect - Added from circular image code
+            const profileContainer = document.querySelector('.profile-image-container');
+            const profileWrapper = document.querySelector('.profile-image-wrapper');
+            const profileSection = document.querySelector('.profile-section');
+            const profileImage = document.querySelector('.profile-image');
+
+            profileSection.addEventListener('mousemove', (e) => {
+                const rect = profileSection.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                const distance = Math.sqrt(x * x + y * y);
+                const maxDistance = 200;
+                
+                if (distance < maxDistance) {
+                    // Calculate scale based on distance
+                    const scale = 1 + (0.15 * (1 - distance/maxDistance));
+                    
+                    // Calculate tilt based on cursor position
+                    const tiltX = (y / maxDistance) * 10;
+                    const tiltY = -(x / maxDistance) * 10;
+                    
+                    // Apply transformations
+                    profileWrapper.style.transform = `scale(${scale}) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                    
+                    // Adjust image properties
+                    const grayscale = Math.min(10, distance/10);
+                    profileImage.style.filter = `grayscale(${grayscale}%)`;
+                    
+                    // Adjust glow intensity
+                    const glowOpacity = 0.4 * (1 - distance/maxDistance);
+                    profileContainer.style.boxShadow = `0 ${8 + (distance/10)}px ${25 + (distance/5)}px rgba(102, 126, 234, ${0.2 + glowOpacity})`;
+                }
+            });
+
+            // Reset on mouse leave
+            profileSection.addEventListener('mouseleave', () => {
+                profileWrapper.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
+                profileImage.style.filter = 'grayscale(10%)';
+                profileContainer.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
+            });
+        });
+        
+        function closePopup() {
+            document.getElementById("successPopup").classList.remove("active");
+        }
+    </script>
+</body>
+</html>
